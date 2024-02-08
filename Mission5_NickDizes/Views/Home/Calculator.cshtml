@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Get A Quote";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Lesson Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#calculate').click(function (){
+                event.preventDefault();
+                var num1 = parseInt($('#hours').val());
+                var num2 = parseInt($('#rate').val());
+
+                //validation
+
+                var isValid = true;
+
+                if (isNaN(num1) || num1 <= 0) {
+                    alert('Please enter a valid number greater than 0');
+                    isValid = false;
+                    $('#total').val(0);
+                }
+
+
+                if(isValid) {
+                    var total = num1 * num2;
+                    $('#total').val(total);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        If you're looking to improve your golf game, there's no better investment than booking lessons with Nick.
+        Renowned for his expertise and passion for the sport, Nick offers personalized instruction tailored to your skill level and goals.
+        With years of experience as both a player and a coach, Nick's teaching approach combines technical precision with a deep understanding of the game's nuances.
+        Whether you're a beginner eager to learn the fundamentals or a seasoned golfer striving to refine your technique,
+        Nick's patient demeanor and clear communication make every lesson a rewarding experience.
+        Under his guidance, you'll unlock new levels of proficiency while fostering a deeper appreciation for the art of golf.
+        Don't wait any longer to elevate your game—schedule a lesson with Nick today and embark on a journey toward mastery on the greens.
+    </p>
+
+    <form id="calculate">
+        <label for="hours">Hours needed: </label><br />
+        <input type="number" id="hours" name="hours" required /><br /><br />
+        <label for="rate">Hourly Rate: </label><br />
+        <input type="number" value="100" id="rate" name="rate" readonly /><br /><br />
+        <button type="button" id="calculate">Get A Quote</button><br /><br />
+    </form>
+
+    <label for="total">Total:</label>
+    <br />
+    <input type="text" id="total" readonly />
+
+</body>
+</html>
+
+    
+
+
+
+
+
